@@ -1,7 +1,9 @@
 package com.hjy.customwidgets.flipcard;
 
+import android.graphics.Bitmap;
 import android.graphics.Camera;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
@@ -9,7 +11,8 @@ import android.view.animation.Transformation;
  * <pre>
  *     author : HJY
  *     time   : 2017/11/25/10:51
- *     desc   : 文件描述
+ *     desc   : 卡片3D旋转效果。
+ *     还有一种实现方式就是在自定义View的onDraw方法进行实现：{@link android.graphics.Canvas#drawBitmap(Bitmap, Matrix, Paint)}
  *     version: 当前版本号
  * </pre>
  */
@@ -44,6 +47,7 @@ public class FlipCardAnimation extends Animation {
                 }
                 isContentChange = true;
             }
+            // 为了让View在旋转过程中的字、图保持方向，不会被翻转
             if (degrees > 0) {
                 degrees = 270 + degrees - 90;
             } else if (degrees < 0) {
@@ -53,6 +57,7 @@ public class FlipCardAnimation extends Animation {
         mCamera.rotateX(degrees);
         mCamera.getMatrix(matrix);
         mCamera.restore();
+        // 设置旋转的中心点。
         matrix.preTranslate(-mCenterX, -mCenterY);
         matrix.postTranslate(mCenterX, mCenterY);
     }

@@ -8,6 +8,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:background="#f00"
         android:layout_height="250dp">
 
         <View

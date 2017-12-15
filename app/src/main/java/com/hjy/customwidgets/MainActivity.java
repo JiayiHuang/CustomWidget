@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         ll03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startAnimation(animation03, ll03, tv03Content, tv03Price, iv03_pro, -270);
+                startAnimation(animation03, ll03, tv03Content, tv03Price, iv03_pro, 360);
             }
         });
     }
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             int centerY = rootView.getHeight() / 2;
             animation = new FlipCardAnimation(0, degree, centerX, centerY);
             animation.setInterpolator(new AnticipateOvershootInterpolator());
-            animation.setDuration(3000);
+            animation.setDuration(6000);
             animation.setFillAfter(false);
             animation.setRepeatCount(-1);
             animation.setAnimationListener(new Animation.AnimationListener() {
