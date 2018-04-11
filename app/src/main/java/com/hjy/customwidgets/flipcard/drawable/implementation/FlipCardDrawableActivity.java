@@ -23,14 +23,14 @@ public class FlipCardDrawableActivity extends AppCompatActivity {
     private AnimatorSet mRightOutSet;
     private AnimatorSet mLeftInSet;
     private FrameLayout mFlFront,mFlBack;
-    private boolean isClickbale,isBackside;
+    private boolean isClickable,isBackside;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flip_card_drawable);
         mFlFront = (FrameLayout) findViewById(R.id.fl_front);
         mFlBack = (FrameLayout) findViewById(R.id.fl_back);
-        isClickbale = true;
+        isClickable = true;
         initAnimators();
         setCameraDistance();
     }
@@ -48,20 +48,20 @@ public class FlipCardDrawableActivity extends AppCompatActivity {
             @Override
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
-                isClickbale = false;
+                isClickable = false;
             }
         });
         mLeftInSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                isClickbale = true;
+                isClickable = true;
             }
         });
     }
 
     public void flipCard(View view) {
-        if (isClickbale){
+        if (isClickable){
             if (!isBackside){//当前正面
                 mRightOutSet.setTarget(mFlFront);
                 mLeftInSet.setTarget(mFlBack);
